@@ -35,20 +35,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// class TestScreen extends StatelessWidget {
-//   const TestScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Column(
-//         children: [
-//           Lottie.asset('assets/animations/sunny.json'),
-//           Lottie.asset('assets/animations/raining.json'),
-//           Lottie.asset('assets/animations/sunny.json'),
-//         ],
-//       ),
-//     );
-//   }
-// }

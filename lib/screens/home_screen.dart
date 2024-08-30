@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/provider/theme_provider.dart';
 import 'package:weather_app/provider/weather_provider.dart';
@@ -27,34 +28,38 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: Container(
-        padding: const EdgeInsets.all(40),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(16),
+            child: TextField(
               decoration: const InputDecoration(
-                labelText: "Enter City",
+                labelText: 'Search City',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.search),
               ),
               onSubmitted: (value) => weatherProvider.fetchWeather(value),
             ),
-            const SizedBox(height: 20),
-            if (weatherProvider.isLoading)
-              const CircularProgressIndicator()
-            else if (weatherProvider.errorMessage != null)
-              Text(weatherProvider.errorMessage!)
-            else if (weatherProvider.weather != null)
-              Column(
-                children: [
-                  Text('City: ${weatherProvider.weather!.city}'),
-                  Text('Temperature: ${weatherProvider.weather!.condition}°C'),
-                  Text('Description: ${weatherProvider.weather!.temperature}'),
-                ],
-              )
-            else
-              const Text('Enter a city to get weather data'),
-          ],
-        ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          if (weatherProvider.isLoading)
+            const CircularProgressIndicator()
+          else if (weatherProvider.errorMessage != null)
+            Text(weatherProvider.errorMessage!)
+          else if (weatherProvider.weather != null)
+            Column(
+              children: [
+                Text(weatherProvider.weather!.city),
+                Lottie.asset('assets/animations/sunny.json'),
+                Text('Temperature: ${weatherProvider.weather!.temperature}°C'),
+                Text('Weather: ${weatherProvider.weather!.condition}'),
+              ],
+            )
+          else
+            Text('Enter a city to get weather data'),
+        ],
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:weather_app/network/weather_api.dart';
 class WeatherProvider extends ChangeNotifier {
   final WeatherApi _weatherApi = WeatherApi(); // Use final for immutability
   Weather? _weather;
+
   bool _isLoading = false;
   String? _errorMessage;
 

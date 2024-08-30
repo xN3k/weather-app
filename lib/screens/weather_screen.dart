@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
+import 'package:weather_app/provider/weather_provider.dart';
 
 class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
@@ -11,16 +13,17 @@ class WeatherScreen extends StatefulWidget {
 class _WeatherScreenState extends State<WeatherScreen> {
   @override
   Widget build(BuildContext context) {
+    final weatherProvider = Provider.of<WeatherProvider>(context);
+
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(50),
+        padding: const EdgeInsets.all(16),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Kathmandu"),
+            Text(weatherProvider.weather!.city),
             Lottie.asset('assets/animations/sunny.json'),
-            Text('40C'),
-            Text('Sunny')
+            Text(weatherProvider.weather!.temperature.toString()),
+            Text(weatherProvider.weather!.condition)
           ],
         ),
       ),
