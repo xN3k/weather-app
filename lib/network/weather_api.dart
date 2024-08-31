@@ -28,8 +28,7 @@ class WeatherApi {
             "Failed to load data. Status code: ${response.statusCode}");
       }
     } catch (e) {
-      print("Error occurred: $e");
-      throw Exception("Error fetching weather data");
+      throw Exception("There might be issue. Please try again later");
     }
   }
 }

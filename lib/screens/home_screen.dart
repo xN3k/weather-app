@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/provider/theme_provider.dart';
 import 'package:weather_app/provider/weather_provider.dart';
+import 'package:weather_app/widgets/weather_animation.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -68,7 +69,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: Theme.of(context).textTheme.displayLarge,
                     ),
                     const SizedBox(height: 20),
-                    Lottie.asset('assets/animations/sunny.json'),
+                    Lottie.asset(
+                        weatherAnimation(weatherProvider.weather!.condition)),
                     const SizedBox(height: 40),
                     Text(
                       '${weatherProvider.weather!.temperature}°C',
